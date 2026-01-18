@@ -1,20 +1,21 @@
-import React, { createContext, useReducer, useEffect } from "react";
-import AppReducer, { initialState } from "./AppReducer";
+import { createContext, useReducer, useEffect } from "react";
+import reducer from "./AppReducer";
 import { loadState, saveState } from "../utils/storage";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext();
 
-export function AppProvider({ children }) {
-  // Load persisted state (mocked persistence)
-  const persistedState = loadState();
+const INITIAL_STATE = {
+  blueprints: [],
+  contracts: [],
+};
 
+export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(
-    AppReducer,
-    persistedState || initialState
+    reducer,
+    INITIAL_STATE,
+    (initial) => loadState() || initial
   );
 
-  // Persist state on every change
   useEffect(() => {
     saveState(state);
   }, [state]);
