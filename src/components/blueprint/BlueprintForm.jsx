@@ -15,7 +15,7 @@ function createEmptyField() {
 export default function BlueprintForm() {
   const { dispatch } = useContext(AppContext);
 
-  // ✅ Start with ONE required field
+  // Start with ONE required field
   const [fields, setFields] = useState([createEmptyField()]);
   const [name, setName] = useState("");
   const [error, setError] = useState("");
@@ -31,6 +31,12 @@ export default function BlueprintForm() {
         f.id === updatedField.id ? updatedField : f
       )
     );
+    setError("");
+  }
+
+  function deleteField(fieldId) {
+    if (fields.length === 1) return; // safety guard
+    setFields(fields.filter((f) => f.id !== fieldId));
     setError("");
   }
 
@@ -106,8 +112,7 @@ export default function BlueprintForm() {
 
         <button
           onClick={saveBlueprint}
-          className="bg-blue-600 px-4 py-2 rounded-md text-sm font-medium disabled:opacity-50"
-          disabled={!name.trim()}
+          className="bg-blue-600 px-4 py-2 rounded-md text-sm font-medium"
         >
           Save Blueprint
         </button>
@@ -119,6 +124,8 @@ export default function BlueprintForm() {
             key={field.id}
             field={field}
             onChange={updateField}
+            onDelete={deleteField}
+            canDelete={fields.length > 1}
           />
         ))}
       </div>

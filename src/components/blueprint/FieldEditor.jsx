@@ -1,6 +1,9 @@
-
-export default function FieldEditor({ field, onChange }) {
-
+export default function FieldEditor({
+  field,
+  onChange,
+  onDelete,
+  canDelete,
+}) {
   function update(key, value) {
     onChange({ ...field, [key]: value });
   }
@@ -14,6 +17,21 @@ export default function FieldEditor({ field, onChange }) {
 
   return (
     <div className="border border-slate-700 rounded-lg p-4 bg-slate-900">
+      <div className="flex justify-between items-center mb-3">
+        <span className="text-sm text-slate-300 font-medium">
+          Field
+        </span>
+
+        {canDelete && (
+          <button
+            onClick={() => onDelete(field.id)}
+            className="text-red-400 hover:text-red-300 text-sm"
+          >
+            Delete
+          </button>
+        )}
+      </div>
+
       <div className="grid grid-cols-4 gap-3">
         <select
           value={field.type}
