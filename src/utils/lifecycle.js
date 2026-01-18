@@ -1,0 +1,20 @@
+import { CONTRACT_STATUS } from "../constants/contractStatus";
+
+const ALLOWED_TRANSITIONS = {
+  [CONTRACT_STATUS.CREATED]: [
+    CONTRACT_STATUS.APPROVED,
+    CONTRACT_STATUS.REVOKED,
+  ],
+  [CONTRACT_STATUS.APPROVED]: [CONTRACT_STATUS.SENT],
+  [CONTRACT_STATUS.SENT]: [
+    CONTRACT_STATUS.SIGNED,
+    CONTRACT_STATUS.REVOKED,
+  ],
+  [CONTRACT_STATUS.SIGNED]: [CONTRACT_STATUS.LOCKED],
+  [CONTRACT_STATUS.LOCKED]: [],
+  [CONTRACT_STATUS.REVOKED]: [],
+};
+
+export function canTransition(currentStatus, nextStatus) {
+  return ALLOWED_TRANSITIONS[currentStatus]?.includes(nextStatus);
+}
