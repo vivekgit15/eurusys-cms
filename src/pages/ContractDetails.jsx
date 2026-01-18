@@ -4,6 +4,7 @@ import { AppContext } from "../context/AppContext";
 import { ACTIONS } from "../context/AppReducer";
 import Layout from "../components/common/Layout";
 import ContractForm from "../components/contract/ContractForm";
+import BackButton from "../components/common/BackButton";
 
 export default function ContractDetails() {
   const { id } = useParams();
@@ -25,6 +26,7 @@ export default function ContractDetails() {
 
   return (
     <Layout>
+      <BackButton />
       <ContractForm
         contract={contract}
         onFieldChange={handleFieldChange}

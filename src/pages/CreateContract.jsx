@@ -3,6 +3,8 @@ import { AppContext } from "../context/AppContext";
 import { ACTIONS } from "../context/AppReducer";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/common/Layout";
+import Button from "../components/common/Button";
+import BackButton from "../components/common/BackButton";
 
 export default function CreateContract() {
   const { state, dispatch } = useContext(AppContext);
@@ -35,7 +37,9 @@ export default function CreateContract() {
   }
 
   return (
+    
     <Layout>
+     <BackButton />
       <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 max-w-xl">
         <h2 className="text-xl font-semibold mb-6">Create Contract</h2>
 
@@ -71,13 +75,9 @@ export default function CreateContract() {
           ))}
         </select>
 
-        <button
-          onClick={createContract}
-          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md font-medium "
-
-        >
-          Create Contract
-        </button>
+<Button onClick={createContract}>
+ Create Contract
+</Button>
       </div>
     </Layout>
   );
