@@ -27,6 +27,36 @@ All data is stored using **mocked persistence**.
 No backend or UI designs were provided, and all design and architectural decisions were made independently .
 
 ---
+---
+
+## Setup Instructions
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/vivekgit15/eurusys-cms.git
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. Run the application
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open in browser
+
+   ```
+   http://localhost:5173
+   ```
+
+---
+
 
 ## Tech Stack
 
@@ -214,38 +244,8 @@ This structure enforces separation of concerns and improves readability.
 
 These are acknowledged trade-offs given the assignment scope.
 
----
-
-## Setup Instructions
-
-1. Clone the repository
-
-   ```bash
-   git clone https://github.com/vivekgit15/eurusys-cms.git
-   ```
-
-2. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-3. Run the application
-
-   ```bash
-   npm run dev
-   ```
-
-4. Open in browser
-
-   ```
-   http://localhost:5173
-   ```
-
----
-
 ## Evaluation Readiness
 
 This project satisfies all **functional requirements**, avoids broken flows, and adheres to the architectural expectations outlined in the task description .
 
----
+
